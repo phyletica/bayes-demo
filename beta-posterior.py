@@ -1,5 +1,9 @@
 #! /usr/bin/env python
 
+"""
+A basic demonstration of Bayesian statistics.
+"""
+
 import sys
 import os
 import math
