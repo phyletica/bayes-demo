@@ -17,7 +17,7 @@ st.setup(
     ],
     entry_points={
         'console_scripts':[
-            'betabinomial=betabinomial.cli:cli'
+            'beta-binomial=bayes_demo.cli:cli'
         ]
     },
 )
