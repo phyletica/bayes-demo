@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import click
-import betabinomial as bb
+import beta_binomial as bb
 
 @click.command()
 @click.option('--alpha', '-a', default=1, type=float, help='Alpha shape parameter for beta prior probability distribution')
