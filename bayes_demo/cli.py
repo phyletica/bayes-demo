@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import click
-import beta_binomial as bb
+import bayes_demo as bd
 
 @click.command()
 @click.option('--alpha', '-a', default=1, type=float, help='Alpha shape parameter for beta prior probability distribution')
@@ -13,7 +13,7 @@ def cli(alpha, beta, sample_size, proportion):
     '''
     Description:
     '''
-    m = bb.BetaBinomial(a=alpha, b=beta, n=sample_size, p=proportion)
+    m = bd.BetaBinomial(a=alpha, b=beta, n=sample_size, p=proportion)
 
     print(
         '''
@@ -24,7 +24,7 @@ def cli(alpha, beta, sample_size, proportion):
         '''.format(m.like, m.prior, m.post, m.marginal)
     )
 
-    bb.matplotlib(m)
+    bd.matplotlib(m)
 
 if __name__=='__main__':
     cli()
