@@ -30,7 +30,7 @@ MM = bd.BetaBinomial(a=0.5, b=0.5, n=100, p=0.5)
 
 bd.plot_model(MM)
 ```
-![](/img/plot.png =300x)
+![](/img/plot.png)
 
 
 Compute probability distributions and marginal likelihood of a multiple models and plot the probability distributions and marginal likelihoods of each model
@@ -43,4 +43,4 @@ models = bd.get_models(inputs, n=100, p=0.5)
 
 bd.plot_models(models)
 ```
-![](/img/grid-plot.png =300x)
+![](/img/grid-plot.png)
