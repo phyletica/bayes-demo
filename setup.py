@@ -7,7 +7,7 @@ st.setup(
     url='https://github.com/phyletica/bayes-demo',
     author='Kerry A. Cobb and Jamie R. Oaks',
     author_email='cobbkerry@gmail.com',
-    license='MIT',
+    license='GPLv3',
     packages=st.find_packages(),
     install_requires=[
         'click',
@@ -17,7 +17,7 @@ st.setup(
     ],
     entry_points={
         'console_scripts':[
-            'beta-binomial=bayes_demo.cli:cli'
+            'bayes-demo=bayes_demo.cli:cli'
         ]
     },
 )

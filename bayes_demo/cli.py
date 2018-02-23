@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import click
 import bayes_demo as bd
 
@@ -13,7 +11,7 @@ def cli(alpha, beta, sample_size, proportion):
     '''
     Description:
     '''
-    m = bd.BetaBinomial(a=alpha, b=beta, n=sample_size, p=proportion)
+    M = bd.BetaBinomial(a=alpha, b=beta, n=sample_size, p=proportion)
 
     print(
         '''
@@ -21,10 +19,7 @@ def cli(alpha, beta, sample_size, proportion):
         Prior Density = {}
         Posterior Density = {}
         Marginal Likelihood = {}
-        '''.format(m.like, m.prior, m.post, m.marginal)
+        '''.format(M.like, M.prior, M.post, M.marginal)
     )
 
-    bd.matplotlib(m)
-
-if __name__=='__main__':
-    cli()
+    bd.matplotlib(M)
