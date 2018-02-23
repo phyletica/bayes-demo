@@ -7,19 +7,19 @@ Used to compute Figure 1 in:
 
 An interactive Javascript implementation is available at [https://kerrycobb.github.io/beta-binomial-web-demo/](https://kerrycobb.github.io/beta-binomial-web-demo/)
 
-### Installation
+## Installation
 ```bash
 pip install git+https://github.com/phyletica/bayes-demo
 ```
 
-### Usage
-##### Command Line
+## Usage
+### Command Line
 ```bash
 bayes-demo --help
 
 ```
 
-##### Python Module
+### Python Module
 Compute probability distributions and marginal likelihood of a single model and plot the probability distributions
 ```python
 import bayes_demo as bd
@@ -30,7 +30,7 @@ MM = bd.BetaBinomial(a=0.5, b=0.5, n=100, p=0.5)
 
 bd.plot_model(MM)
 ```
-![](img/plot.png =300x)
+![](/img/plot.png =300x)
 
 
 Compute probability distributions and marginal likelihood of a multiple models and plot the probability distributions and marginal likelihoods of each model
@@ -43,4 +43,4 @@ models = bd.get_models(inputs, n=100, p=0.5)
 
 bd.plot_models(models)
 ```
-![](img/grid-plot.png =300x)
+![](/img/grid-plot.png =300x)
