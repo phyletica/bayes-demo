@@ -20,6 +20,10 @@ bayes-demo --help
 ```
 
 ### Python Module
+
+
+#### Examples
+##### Compute and plot single model
 Compute probability distributions and marginal likelihood of a single model and plot the probability distributions
 ```python
 import bayes_demo as bd
@@ -33,6 +37,7 @@ bd.plot_model(MM)
 ![](/img/plot.png)
 
 
+##### Compute and plot multiple models
 Compute probability distributions and marginal likelihood of a multiple models and plot the probability distributions and marginal likelihoods of each model
 ```python
 import bayes_demo as bd
