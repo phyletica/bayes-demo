@@ -9,7 +9,7 @@ import numpy as np
 def plot_model(M, show=True, save=False, format='png'):
     """Plot probability densities functions of a binomial model instance
 
-        Parameters:
+        Args:
             M: betabinomial class instance
             show: boolean, show plot, defaults to True
             save: boolean, save plot to plot.pdf, defaults to False
@@ -51,9 +51,9 @@ def plot_model(M, show=True, save=False, format='png'):
         plt.show()
 
 def plot_models(models, show=True, save=False, format='png'):
-    """Plot probability density functions of multiple models
+    """Plot probability density functions of multiple models and marginal likelihoods
 
-    Parameters:
+    Args:
         models: list of 4 betabinomial model class instances
         show: boolean, show graph, defaults to True
         save: boolean, save plot to grid-plot.pdf, defaults to False

@@ -8,9 +8,9 @@ import numpy as np
 import scipy.stats as st
 
 class BetaBinomial(object):
-    """Binomial model
+    """Binomial model with from a beta prior distribution
 
-    Parameters:
+    Args:
         a: alpha parameter for beta prior distribution, defaults to 1
         b: beta parameter for beta prior distribution, defaults to 1
         n: sample size of simulated, defaults to 100
@@ -41,10 +41,10 @@ class BetaBinomial(object):
         like_df: likelihood density function of array x
         prior_df: prior probability density function of array x
         post_df: posterior probability density function of array x
-        like: model likelihood
-        prior: model prior probability
-        post: model posterior probability
-        marginal: model marginal likelihood
+        like: likelihood of model
+        prior: prior probability of model
+        post: posterior probability of model
+        marginal: marginal likelihood of model
 
     Methods:
         update()

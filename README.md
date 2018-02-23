@@ -19,9 +19,7 @@ bayes-demo --help
 
 ```
 
-### Python Module
-
-
+### Python Modules
 #### Examples
 ##### Compute and plot single model
 Compute probability distributions and marginal likelihood of a single model and plot the probability distributions
@@ -49,3 +47,57 @@ models = bd.get_models(inputs, n=100, p=0.5)
 bd.plot_models(models)
 ```
 ![](/img/grid-plot.png)
+
+#### BetaBinomial
+Binomial model with from a beta prior distribution
+
+Arguments:
+    a: alpha parameter for beta prior distribution, defaults to 1
+    b: beta parameter for beta prior distribution, defaults to 1
+    n: sample size of simulated, defaults to 100
+    p: proportion of successes, defaults to 0.5
+    params: number of parameters to draw from probability density functions
+
+Class attributes:
+    a: alpha shape parameter of model
+    b: beta shape parameter of model
+    n: sample size of model
+    p: proportion success of model
+    x: array between 0 and 1 with length given by params argument
+    like_df: likelihood density function of array x
+    prior_df: prior probability density function of array x
+    post_df: posterior probability density function of array x
+    like: likelihood of model
+    prior: prior probability of model
+    post: posterior probability of model
+    marginal: marginal likelihood of model
+
+#### get_models
+Compute multiple binomial models
+
+Arguments:
+    shape_params: List of tuples containing alpha and beta shape parameters.
+        Example: [(a1, b1), (a2, b2), (a3, b3)]
+    a: alpha parameter for beta prior distribution, defaults to 1
+    b: beta parameter for beta prior distribution, defaults to 1
+    n: sample size of simulated, defaults to 100
+    p: proportion of successes, defaults to 0.5
+    params: number of parameters to draw from probability density functions
+
+#### plot_model
+Plot probability densities functions of a binomial model instance
+
+Arguments:
+    M: BetaBinomial class instance
+    show: boolean, show plot, defaults to True
+    save: boolean, save plot to plot.pdf, defaults to False
+    format: output file format, defaults to 'png'
+
+#### plot_models
+Plot probability density functions and marginal likelihoods of multiple models
+
+Arguments:
+    models: list of 4 betabinomial model class instances
+    show: boolean, show graph, defaults to True
+    save: boolean, save plot to grid-plot.pdf, defaults to False
+    format: output file format, defaults to 'png'
