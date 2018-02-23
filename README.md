@@ -33,6 +33,7 @@ MM = bd.BetaBinomial(a=0.5, b=0.5, n=100, p=0.5)
 bd.plot_model(MM)
 ```
 Output:
+
 ![](/img/plot.png)
 
 ##### Compute and plot multiple models
@@ -47,6 +48,7 @@ models = bd.get_models(inputs, n=100, p=0.5)
 bd.plot_models(models)
 ```
 Output:
+
 ![](/img/grid-plot.png)
 
 #### Documentation
