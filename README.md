@@ -102,7 +102,7 @@ Arguments:
 Plot probability density functions and marginal likelihoods of multiple models
 
 Arguments:
-- models: list of 4 betabinomial model class instances
+- models: list of 4 BetaBinomial model instances
 - show: boolean, show graph, defaults to True
 - save: boolean, save plot to grid-plot.pdf, defaults to False
 - format: output file format, defaults to 'png'
