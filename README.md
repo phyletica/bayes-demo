@@ -32,6 +32,7 @@ MM = bd.BetaBinomial(a=0.5, b=0.5, n=100, p=0.5)
 
 bd.plot_model(MM)
 ```
+Output:
 ![](/img/plot.png)
 
 
@@ -46,6 +47,7 @@ models = bd.get_models(inputs, n=100, p=0.5)
 
 bd.plot_models(models)
 ```
+Output:
 ![](/img/grid-plot.png)
 
 #### Documentation
@@ -53,52 +55,64 @@ bd.plot_models(models)
 Binomial model with from a beta prior distribution
 
 Arguments:
-    a: alpha parameter for beta prior distribution, defaults to 1
-    b: beta parameter for beta prior distribution, defaults to 1
-    n: sample size of simulated, defaults to 100
-    p: proportion of successes, defaults to 0.5
-    params: number of parameters to draw from probability density functions
+<ul style="list-style: none;">
+    <li>a: alpha parameter for beta prior distribution, defaults to 1</li>
+    <li>b: beta parameter for beta prior distribution, defaults to 1</li>
+    <li>n: sample size of simulated, defaults to 100</li>
+    <li>p: proportion of successes, defaults to 0.5</li>
+    <li>params: number of parameters to draw from probability density functions</li>
+</ul>
 
 Class attributes:
-    a: alpha shape parameter of model
-    b: beta shape parameter of model
-    n: sample size of model
-    p: proportion success of model
-    x: array between 0 and 1 with length given by params argument
-    like_df: likelihood density function of array x
-    prior_df: prior probability density function of array x
-    post_df: posterior probability density function of array x
-    like: likelihood of model
-    prior: prior probability of model
-    post: posterior probability of model
-    marginal: marginal likelihood of model
+<ul style="list-style: none;">
+    <li>a: alpha shape parameter of model</li>
+    <li>b: beta shape parameter of model</li>
+    <li>n: sample size of model</li>
+    <li>p: proportion success of model</li>
+    <li>x: array between 0 and 1 with length given by params argument</li>
+    <li>like_df: likelihood density function of array x</li>
+    <li>prior_df: prior probability density function of array x</li>
+    <li>post_df: posterior probability density function of array x</li>
+    <li>like: likelihood of model</li>
+    <li>prior: prior probability of model</li>
+    <li>post: posterior probability of model</li>
+    <li>marginal: marginal likelihood of model</li>
+</ul>
 
 ##### get_models()
 Compute multiple binomial models
 
 Arguments:
-    shape_params: List of tuples containing alpha and beta shape parameters.
-        Example: [(a1, b1), (a2, b2), (a3, b3)]
-    a: alpha parameter for beta prior distribution, defaults to 1
-    b: beta parameter for beta prior distribution, defaults to 1
-    n: sample size of simulated, defaults to 100
-    p: proportion of successes, defaults to 0.5
-    params: number of parameters to draw from probability density functions
+<ul style="list-style: none;">
+    <li>shape_params: List of tuples containing alpha and beta shape parameters.</li>
+        <ul style="list-style:none;">
+            <li>Example: [(a1, b1), (a2, b2), (a3, b3)]</li>
+        </ul>
+    <li>a: alpha parameter for beta prior distribution, defaults to 1</li>
+    <li>b: beta parameter for beta prior distribution, defaults to 1</li>
+    <li>n: sample size of simulated, defaults to 100</li>
+    <li>p: proportion of successes, defaults to 0.5</li>
+    <li>params: number of parameters to draw from probability density functions</li>
+</ul>
 
 ##### plot_model()
 Plot probability densities functions of a binomial model instance
 
 Arguments:
-    M: BetaBinomial class instance
-    show: boolean, show plot, defaults to True
-    save: boolean, save plot to plot.pdf, defaults to False
-    format: output file format, defaults to 'png'
+<ul style="list-style: none;">
+    <li>M: BetaBinomial class instance</li>
+    <li>show: boolean, show plot, defaults to True</li>
+    <li>save: boolean, save plot to plot.pdf, defaults to False</li>
+    <li>format: output file format, defaults to 'png'</li>
+</ul>
 
 ##### plot_models()
 Plot probability density functions and marginal likelihoods of multiple models
 
 Arguments:
-    models: list of 4 betabinomial model class instances
-    show: boolean, show graph, defaults to True
-    save: boolean, save plot to grid-plot.pdf, defaults to False
-    format: output file format, defaults to 'png'
+<ul style="list-style: none;">
+    <li>models: list of 4 betabinomial model class instances</li>
+    <li>show: boolean, show graph, defaults to True</li>
+    <li>save: boolean, save plot to grid-plot.pdf, defaults to False</li>
+    <li>format: output file format, defaults to 'png'</li>
+</ul>
