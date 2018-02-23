@@ -48,7 +48,8 @@ bd.plot_models(models)
 ```
 ![](/img/grid-plot.png)
 
-#### BetaBinomial
+#### Documentation
+##### BetaBinomial()
 Binomial model with from a beta prior distribution
 
 Arguments:
@@ -72,7 +73,7 @@ Class attributes:
     post: posterior probability of model
     marginal: marginal likelihood of model
 
-#### get_models
+##### get_models()
 Compute multiple binomial models
 
 Arguments:
@@ -84,7 +85,7 @@ Arguments:
     p: proportion of successes, defaults to 0.5
     params: number of parameters to draw from probability density functions
 
-#### plot_model
+##### plot_model()
 Plot probability densities functions of a binomial model instance
 
 Arguments:
@@ -93,7 +94,7 @@ Arguments:
     save: boolean, save plot to plot.pdf, defaults to False
     format: output file format, defaults to 'png'
 
-#### plot_models
+##### plot_models()
 Plot probability density functions and marginal likelihoods of multiple models
 
 Arguments:
