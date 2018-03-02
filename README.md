@@ -2,7 +2,7 @@
 
 Tool for calculating the posterior probability distribution and marginal likelihood of a parameter from a binomial distribution using a beta prior probability distribution.
 
-Used to compute Figure 1 in:
+Used to compute Figure 1 in
 "Jamie R. Oaks, Kerry A. Cobb, Vladimir N. Minin, and Adam D. Leaché. 2018. Marginal likelihoods in phylogenetics: a review of methods and applications."
 
 An interactive Javascript implementation is available at [https://kerrycobb.github.io/beta-binomial-web-demo/](https://kerrycobb.github.io/beta-binomial-web-demo/)
@@ -53,7 +53,7 @@ Output:
 
 #### Documentation
 ```
-BetaBinomial()
+BetaBinomial(a=1, b=1, n=100, p=0.5, params=1000)
 ```
 Binomial model with a beta prior distribution
 
@@ -80,7 +80,7 @@ Class attributes:
 
 
 ```
-get_models()
+get_models(shape_params, n=100, p=0.5, params=1000)
 ```
 Compute multiple binomial models
 
@@ -94,7 +94,7 @@ Arguments:
 - params: number of parameters to draw from probability density functions
 
 ```
-plot_model()
+plot_model(M, show=True, save=False, format='png')
 ```
 Plot probability density functions of a binomial model instance
 
@@ -105,7 +105,7 @@ Arguments:
 - format: output file format, defaults to 'png'
 
 ```
-plot_models()
+plot_models(models, show=True, save=False, format='png')
 ```
 Plot probability density functions and marginal likelihoods of multiple models
 
