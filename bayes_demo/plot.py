@@ -23,14 +23,14 @@ def plot_model(M, show=True, save=False, format='png'):
 
     plt.plot(
         M.x, M.like_df,
-        color='#1F77B4', linestyle=':', linewidth=1.0,
+        color='gray', linestyle=':', linewidth=1.0,
         label=r'$Likelihood\/\/p(D|\theta$)')
     plt.plot(
-        M.x, M.prior_df, color='#1F77B4', linestyle='--',
+        M.x, M.prior_df, color='gray', linestyle='--',
         linewidth=1.0, label=r'$Prior\/\/p(\theta)$'
     )
     plt.plot(
-        M.x, M.post_df, color='#1F77B4', linestyle='-',
+        M.x, M.post_df, color='gray', linestyle='-',
         linewidth=1.0, label=r'$Posterior\/\/p(\theta|D)$'
     )
     plt.title(r'$\alpha={},\/\/\beta={}$'.format(M.a, M.b))
@@ -43,14 +43,11 @@ def plot_model(M, show=True, save=False, format='png'):
     plt.ylim(bottom=0)
     plt.legend()
     if save:
-        plt.savefig('plot.{}'.format(format), dpi=None, facecolor='w', edgecolor='w',
-                orientation='portrait', papertype=None, format=format,
-                transparent=False, bbox_inches=None, pad_inches=0.1,
-                frameon=None)
+        plt.savefig('plot.{}'.format(format), format=format)
     if show:
         plt.show()
 
-def plot_models(models, show=True, save=False, format='png'):
+def plot_models(models, show=True, save=False, format='pdf'):
     """Plot probability density functions of multiple models and marginal likelihoods
 
     Args:
@@ -68,6 +65,8 @@ def plot_models(models, show=True, save=False, format='png'):
     """
     if len(models) != 4:
         sys.exit('<br>Error in plot_models!<br><br>Input must be a list of 4 betabinomial class instances<br>')
+
+    # Set up subplot canvas
     fig, ax = plt.subplots(nrows=2, ncols=3, figsize=None, frameon=True)
     a1 = ax[0, 0]
     a2 = ax[0, 1]
@@ -75,19 +74,21 @@ def plot_models(models, show=True, save=False, format='png'):
     a4 = ax[1, 0]
     a5 = ax[1, 1]
     a6 = ax[1, 2]
+
+    # Generate graph for each of the four models
     model_axes = [[a1, models[0]], [a2, models[1]], [a4, models[2]], [a5, models[3]]]
     for ax, m in model_axes:
         ax.plot(
-            m.x, m.like_df, color='#1F77B4', linestyle=':',
-            linewidth=1.0, label=r'$Likelihood\/\/p(D|\theta$)'
+            m.x, m.like_df, color='gray', linestyle=':',
+            linewidth=.75, label=r'$Likelihood\/\/p(D|\theta$)'
         )
         ax.plot(
-            m.x, m.prior_df, color='#1F77B4', linestyle='--',
-            linewidth=1.0, label=r'$Prior\/\/p(\theta)$'
+            m.x, m.prior_df, color='gray', linestyle='--',
+            linewidth=.75, label=r'$Prior\/\/p(\theta)$'
         )
         ax.plot(
-            m.x, m.post_df, color='#1F77B4', linestyle='-',
-            linewidth=1.0, label=r'$Posterior\/\/p(\theta|D)$'
+            m.x, m.post_df, color='gray', linestyle='-',
+            linewidth=.75, label=r'$Posterior\/\/p(\theta|D)$'
         )
         ax.set_title(r'$M_{}$'.format(m.name), fontsize=12, loc='left')
         ax.set_xlabel(r'$\theta$', fontsize=10)
@@ -97,28 +98,32 @@ def plot_models(models, show=True, save=False, format='png'):
         ax.set_xlim(left=-.01, right=1.01)
         ax.set_ylim(bottom=-.1)
         ax.text(
-        .76, .95,
-        r'$\alpha={},\/\/\beta={}$'.format(m.a, m.b),
-        ha='center',
-        va='center',
-        transform = ax.transAxes,
-        fontsize=6
+             .76, .95,
+             r'$\alpha={},\/\/\beta={}$'.format(m.a, m.b),
+             ha='center',
+             va='center',
+             transform = ax.transAxes,
+             fontsize=6
         )
-        a2.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0)
-        a3.axis('off')
 
-    a6.bar(np.arange(1, len(models)+1), [m.marginal for m in models])
+    # Hide graph from top right cell
+    a3.set_axis_off()
+
+    # Generate graph for marginal likelihoods
+    a6.bar(np.arange(1, len(models)+1), [m.marginal for m in models], color='gray')
     a6.set_xticks([1,2,3,4])
     a6.set_title(r'Marginal Likelihoods', fontsize=10)
     a6.set_xticklabels([r'$M_{}$'.format(m.name) for m in models], fontsize=10)
     a6.set_ylabel(r'P(D)', fontsize=10)
     a6.tick_params(labelsize=6)
 
+    # Generate figure legend using the first model graph
+    handles, labels = a1.get_legend_handles_labels()
+    fig.legend(handles, labels, bbox_to_anchor=(.95, .94))
+
+    # Output graph
     plt.tight_layout(pad=1, w_pad=0, h_pad=0)
     if save:
-        plt.savefig('grid-plot.{}'.format(format), dpi=None, facecolor='w', edgecolor='w',
-                orientation='portrait', papertype=None, format=format,
-                transparent=False, bbox_inches=None, pad_inches=0.1,
-                frameon=None)
+        plt.savefig('grid-plot.{}'.format(format), format=format)
     if show:
         plt.show()
