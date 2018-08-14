@@ -79,18 +79,33 @@ def plot_models(models, show=True, save=False, format='pdf'):
     model_axes = [[a1, models[0]], [a2, models[1]], [a4, models[2]], [a5, models[3]]]
     for ax, m in model_axes:
         ax.plot(
-            m.x, m.like_df, color='gray', linestyle=':',
-            linewidth=.75, label=r'$Likelihood\/\/p(D|\theta$)'
+            m.x,
+            m.like_df,
+            # color='gray',
+            color=(0, 0, 0, 0.5),
+            linestyle=':',
+            linewidth=1.5,
+            label=r'$Likelihood\/\/p(D|\theta$)'
         )
         ax.plot(
-            m.x, m.prior_df, color='gray', linestyle='--',
-            linewidth=.75, label=r'$Prior\/\/p(\theta)$'
+            m.x,
+            m.prior_df,
+            # color='gray',
+            color=(0, 0, 0, 0.5),
+            linestyle='--',
+            linewidth=1.5,
+            label=r'$Prior\/\/p(\theta)$'
         )
         ax.plot(
-            m.x, m.post_df, color='gray', linestyle='-',
-            linewidth=.75, label=r'$Posterior\/\/p(\theta|D)$'
+            m.x,
+            m.post_df,
+            # color='gray',
+            color=(0, 0, 0, 0.5),
+            linestyle='-',
+            linewidth=1.5,
+            label=r'$Posterior\/\/p(\theta|D)$'
         )
-        ax.set_title(r'$M_{}$'.format(m.name), fontsize=12, loc='left')
+        ax.set_title(r'$M_{}$'.format(m.name), fontsize=14, loc='left')
         ax.set_xlabel(r'$\theta$', fontsize=10)
         ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8, 1])
         ax.tick_params(labelsize=6)
@@ -98,19 +113,23 @@ def plot_models(models, show=True, save=False, format='pdf'):
         ax.set_xlim(left=-.01, right=1.01)
         ax.set_ylim(bottom=-.1)
         ax.text(
-             .76, .95,
+             .76, 1.05,
              r'$\alpha={},\/\/\beta={}$'.format(m.a, m.b),
              ha='center',
              va='center',
              transform = ax.transAxes,
-             fontsize=6
+             fontsize=7
         )
 
     # Hide graph from top right cell
     a3.set_axis_off()
 
     # Generate graph for marginal likelihoods
-    a6.bar(np.arange(1, len(models)+1), [m.marginal for m in models], color='gray')
+    a6.bar(
+        np.arange(1, len(models)+1),
+        [m.marginal for m in models],
+        color=(0, 0, 0, 0.5)
+    )
     a6.set_xticks([1,2,3,4])
     a6.set_title(r'Marginal Likelihoods', fontsize=10)
     a6.set_xticklabels([r'$M_{}$'.format(m.name) for m in models], fontsize=10)
@@ -119,7 +138,7 @@ def plot_models(models, show=True, save=False, format='pdf'):
 
     # Generate figure legend using the first model graph
     handles, labels = a1.get_legend_handles_labels()
-    fig.legend(handles, labels, bbox_to_anchor=(.95, .94))
+    fig.legend(handles, labels, bbox_to_anchor=(.95, .93))
 
     # Output graph
     plt.tight_layout(pad=1, w_pad=0, h_pad=0)
