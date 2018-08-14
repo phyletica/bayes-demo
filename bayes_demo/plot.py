@@ -6,6 +6,12 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
+# # Render text using Latex
+# from matplotlib import rc
+# rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
+# rc('text', usetex=True)
+
+
 def plot_model(M, show=True, save=False, format='png'):
     """Plot probability densities functions of a binomial model instance
 
@@ -20,20 +26,31 @@ def plot_model(M, show=True, save=False, format='png'):
             M = bd.BetaBinomial()
             bd.plot_model(M, show=False)
     """
-
     plt.plot(
-        M.x, M.like_df,
-        color='gray', linestyle=':', linewidth=1.0,
-        label=r'$Likelihood\/\/p(D|\theta$)')
-    plt.plot(
-        M.x, M.prior_df, color='gray', linestyle='--',
-        linewidth=1.0, label=r'$Prior\/\/p(\theta)$'
+        M.x,
+        M.like_df,
+        color=(0, 0, 0, 1),
+        linestyle=':',
+        linewidth=2,
+        label=r'$Likelihood \ p(D|\theta$)'
     )
     plt.plot(
-        M.x, M.post_df, color='gray', linestyle='-',
-        linewidth=1.0, label=r'$Posterior\/\/p(\theta|D)$'
+        M.x,
+        M.prior_df,
+        color=(0, 0, 0, 0.5),
+        linestyle='--',
+        linewidth=2,
+        label=r'$Prior \ p(\theta)$'
     )
-    plt.title(r'$\alpha={},\/\/\beta={}$'.format(M.a, M.b))
+    plt.plot(
+        M.x,
+        M.post_df,
+        color=(0, 0, 0, 0.5),
+        linestyle='-',
+        linewidth=2,
+        label=r'$Posterior \ p(\theta|D)$'
+    )
+    plt.title(r'$\alpha={}, \ \beta={}$'.format(M.a, M.b))
     plt.xlabel(r'$\theta$', fontsize=10)
     plt.xticks([0,1], )
     plt.tick_params(labelsize=6)
@@ -46,6 +63,7 @@ def plot_model(M, show=True, save=False, format='png'):
         plt.savefig('plot.{}'.format(format), format=format)
     if show:
         plt.show()
+
 
 def plot_models(models, show=True, save=False, format='pdf'):
     """Plot probability density functions of multiple models and marginal likelihoods
@@ -81,29 +99,26 @@ def plot_models(models, show=True, save=False, format='pdf'):
         ax.plot(
             m.x,
             m.like_df,
-            # color='gray',
-            color=(0, 0, 0, 0.5),
+            color=(0, 0, 0, 1),
             linestyle=':',
             linewidth=1.5,
-            label=r'$Likelihood\/\/p(D|\theta$)'
+            label=r'$Likelihood \ p(D|\theta$)'
         )
         ax.plot(
             m.x,
             m.prior_df,
-            # color='gray',
             color=(0, 0, 0, 0.5),
             linestyle='--',
             linewidth=1.5,
-            label=r'$Prior\/\/p(\theta)$'
+            label=r'$Prior \ p(\theta)$'
         )
         ax.plot(
             m.x,
             m.post_df,
-            # color='gray',
             color=(0, 0, 0, 0.5),
             linestyle='-',
             linewidth=1.5,
-            label=r'$Posterior\/\/p(\theta|D)$'
+            label=r'$Posterior \ p(\theta|D)$'
         )
         ax.set_title(r'$M_{}$'.format(m.name), fontsize=14, loc='left')
         ax.set_xlabel(r'$\theta$', fontsize=10)
@@ -114,7 +129,7 @@ def plot_models(models, show=True, save=False, format='pdf'):
         ax.set_ylim(bottom=-.1)
         ax.text(
              .76, 1.05,
-             r'$\alpha={},\/\/\beta={}$'.format(m.a, m.b),
+             r'$\alpha={}, \ \beta={}$'.format(m.a, m.b),
              ha='center',
              va='center',
              transform = ax.transAxes,
@@ -128,7 +143,7 @@ def plot_models(models, show=True, save=False, format='pdf'):
     a6.bar(
         np.arange(1, len(models)+1),
         [m.marginal for m in models],
-        color=(0, 0, 0, 0.5)
+        color=(0, 0, 0, 0.3)
     )
     a6.set_xticks([1,2,3,4])
     a6.set_title(r'Marginal Likelihoods', fontsize=10)
